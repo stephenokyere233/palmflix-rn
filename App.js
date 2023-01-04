@@ -1,20 +1,27 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { StatusBar } from "expo-status-bar";
+import React from "react";
+import { withExpoSnack } from "nativewind";
 
-export default function App() {
+import { SafeAreaView, Text, View } from "react-native";
+import { styled } from "nativewind";
+import MainNav from "./components/Navbar/MainNav";
+import TitleBar from "./components/Navbar/TitleBar";
+
+const StyledView = styled(View);
+const StyledText = styled(Text);
+const StyledSafeAreaView = styled(SafeAreaView);
+
+const App = () => {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <StyledSafeAreaView className="flex flex-col flex-1">
+      <TitleBar />
+      <StyledView className="flex-1 items-center bg-red-500 justify-center">
+        <StyledText className="text-slate-800">Try editing me! 🎉</StyledText>
+        <StatusBar hidden={true} barStyle="light-content" />
+      </StyledView>
+      <MainNav />
+    </StyledSafeAreaView>
   );
-}
+};
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+export default withExpoSnack(App);
