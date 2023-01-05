@@ -6,5 +6,5 @@ export const discover_movies = `${api_url}discover/movie?api_key=${API_KEY}&lang
 export const tv_shows = `${api_url}tv/popular?api_key=${API_KEY}&language=en-US`;
 export const trending_movies = `${api_url}trending/all/day?api_key=${API_KEY}&language=en-US`;
 export const top_rated = `${api_url}discover/movie?certification_country=US&certification.lte=G&sort_by=popularity.desc&api_key=${API_KEY}&language=en-US`;
-export const search_url = `${api_url}search/multi?api_key=${API_KEY}&language=en-US&page=1`;
+export const search_url = `${api_url}search/multi?api_key=${API_KEY}&language=en-US&page=1&query=`;
 

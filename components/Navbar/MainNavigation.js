@@ -14,8 +14,10 @@ import Search from "../../screens/search";
 import Trending from "../../screens/trending";
 import TVShows from "../../screens/TVShows";
 import TopRated from "../../screens/TopRated";
-import TitleBar from "./TitleBar";
 
+import { createStackNavigator } from "@react-navigation/stack";
+// import MovieDetails from "../../screens/MovieDetails";
+// const Stack = createStackNavigator();
 //Screen names
 const homeName = "Discover";
 const searchName = "Search";
@@ -37,6 +39,7 @@ function MainContainer() {
     <NavigationContainer>
       {/* <TitleBar /> */}
       <Tab.Navigator
+   
         //   style={tw`items-center flex justify-center`}
         initialRouteName={homeName}
         screenOptions={({ route }) => ({
@@ -54,7 +57,7 @@ function MainContainer() {
             backgroundColor: "#101029",
             // activeTintColor: "blueviolet",
           },
-          tabBarLabelStyle:{},
+          tabBarLabelStyle: {},
           tabBarActiveTintColor: "blueviolet",
           tabBarIcon: ({ focused, color, size }) => {
             let iconName;
@@ -128,6 +131,7 @@ function MainContainer() {
         <Tab.Screen name={trendingName} component={Trending} />
         <Tab.Screen name={tvShowsName} component={TVShows} />
         <Tab.Screen name={topRatedName} component={TopRated} />
+        {/* <Stack.Screen name="Movie Details" component={MovieDetails} /> */}
       </Tab.Navigator>
     </NavigationContainer>
   );

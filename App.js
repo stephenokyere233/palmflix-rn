@@ -14,8 +14,10 @@ import TVShows from "./screens/TVShows";
 import TopRated from "./screens/TopRated";
 import MainContainer from "./components/Navbar/MainNavigation";
 import { AppProvider } from "./context/context";
+// import { createStackNavigator } from "@react-navigation/stack";
+// import MovieDetails from "./screens/MovieDetails";
 
-const Stack = createStackNavigator();
+// const Stack = createStackNavigator();
 
 const App = () => {
   return (
