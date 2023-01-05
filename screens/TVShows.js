@@ -1,12 +1,24 @@
 import React from "react";
-import { View, Text } from "react-native";
-import tw from "twrnc";
+import { View, Text, FlatList } from "react-native";
+import Card from "../components/cardContainer/Card";
+import { tv_shows } from "../constants/keys";
+import useGetData from "../hooks/useGetData";
 
 
 const TVShows = () => {
+  const {data,loading,error}=useGetData(tv_shows)
   return (
-    <View style={tw`flex flex-1 bg-[#021D44]`}>
-      <Text>TVShows</Text>
+    <View className={`flex-1 flex items-center justify-center bg-[#021D44]`}>
+      <View className={`w-full`}>
+        <FlatList
+          data={data}
+          numColumns={2}
+          keyExtractor={({ id }) => id}
+          renderItem={(movie) => (
+            <Card name={movie.item.title} image={movie.item.poster_path} />
+          )}
+        />
+      </View>
     </View>
   );
 };

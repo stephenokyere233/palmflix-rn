@@ -13,13 +13,16 @@ import Trending from "./screens/trending";
 import TVShows from "./screens/TVShows";
 import TopRated from "./screens/TopRated";
 import MainContainer from "./components/Navbar/MainNavigation";
+import { AppProvider } from "./context/context";
 
 const Stack = createStackNavigator();
 
 const App = () => {
   return (
     <>
-      <MainContainer />
+      <AppProvider>
+        <MainContainer />
+      </AppProvider>
       {/* <StatusBar hidden={true} barStyle="light-content" /> */}
     </>
   );

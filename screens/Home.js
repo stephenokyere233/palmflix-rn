@@ -1,44 +1,13 @@
-import axios from "axios";
-import React, { useEffect, useState } from "react";
-import {
-  View,
-  Text,
-  FlatList,
-  ScrollView,
-  StyleSheet,
-  VirtualizedList,
-} from "react-native";
-import { useCallback } from "react";
-import tw from "twrnc";
+import React, { useContext, useEffect } from "react";
+import { View, Text, FlatList, StyleSheet } from "react-native";
 import Card from "../components/cardContainer/Card";
 import { discover_movies } from "../constants/keys";
+import { AppContext } from "../context/context";
+import useGetData from "../hooks/useGetData";
 
 const Home = () => {
-  const [data, setData] = useState([]);
-  const getPopularMovies = useCallback(async () => {
-    try {
-      const response = await axios.get(discover_movies);
-      console.log(response.data.results);
-      setData(response.data.results);
-    } catch (error) {
-      console.error(error);
-      return <Text>Not found</Text>;
-    }
-  }, []);
-  //   const Card = (props) => {
-  //     return (
-  //       <View style={tw`border h-20`}>
-  //         <Text style={tw`text-white capitalize text-xl`}>{props.name}</Text>
-  //       </View>
-  //     );
-  //   };
-  //   const renderItem = ({ movie }) => {
-  //     <Card name={movie.item.title} />;
-  //   };
-  useEffect(() => {
-    getPopularMovies();
-  }, []);
-  if (!data) return <Text>Loading...</Text>;
+  const { data, loading } = useGetData(discover_movies);
+  if (loading) return <Text>Loading...</Text>;
 
   return (
     <View className={`flex-1 flex items-center justify-center bg-[#021D44]`}>
