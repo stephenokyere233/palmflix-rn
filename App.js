@@ -20,7 +20,7 @@ const App = () => {
   return (
     <>
       <MainContainer />
-      <StatusBar hidden={true} barStyle="light-content" />
+      {/* <StatusBar hidden={true} barStyle="light-content" /> */}
     </>
   );
 };

@@ -17,7 +17,7 @@ import TopRated from "../../screens/TopRated";
 import TitleBar from "./TitleBar";
 
 //Screen names
-const homeName = "Home";
+const homeName = "Discover";
 const searchName = "Search";
 const trendingName = "Trending";
 const topRatedName = "Top Rated";
@@ -35,7 +35,7 @@ const Tab = createBottomTabNavigator();
 function MainContainer() {
   return (
     <NavigationContainer>
-      <TitleBar />
+      {/* <TitleBar /> */}
       <Tab.Navigator
         //   style={tw`items-center flex justify-center`}
         initialRouteName={homeName}
