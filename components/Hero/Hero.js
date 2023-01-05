@@ -1,26 +1,34 @@
-import React from "react";
-import { Text, View, StyleSheet } from "react-native";
-import CardContainer from "../cardContainer/CardContainer";
-import tw from "twrnc";
+import React, { useContext, useEffect } from "react";
+import { View, Text, FlatList, StyleSheet } from "react-native";
+import Card from "../cardContainer/Card";
+import LoadingSpinner from "../loader/loader";
+import { discover_movies } from "../../constants/keys";
+import { AppContext } from "../../context/context";
+import useGetData from "../../hooks/useGetData";
 
+const Hero = ({endpoint}) => {
+  const { data, loading } = useGetData(endpoint);
+  if (loading) return <LoadingSpinner />;
 
-const Hero = () => {
   return (
-    <View style={tw`flex flex-1 bg-[#222]`}>
-      <CardContainer />
+    <View className={`flex-1 flex items-center justify-center bg-[#021D44]`}>
+      <View className={`w-full`}>
+        <FlatList
+          data={data}
+          numColumns={2}
+          keyExtractor={(item) => item.id}
+          renderItem={(movie) => (
+            <Card
+              name={movie.item.title}
+              pressed={() => console.log(movie.item.id)}
+              id={movie.item.id}
+              image={movie.item.poster_path}
+            />
+          )}
+        />
+      </View>
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    borderWidth: 2,
-    // borderColor: "#4299E1",
-    alignItems: "center",
-    backgroundColor: "#E53E3E",
-    justifyContent: "center",
-  },
-});
 
 export default Hero;
