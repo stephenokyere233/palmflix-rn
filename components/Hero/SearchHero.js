@@ -6,7 +6,7 @@ import { discover_movies } from "../../constants/keys";
 import { AppContext } from "../../context/context";
 import useSearch from "../../hooks/useSearch";
 
-const SearchHero = ({ query }) => {
+const SearchHero = ({ query, navigation }) => {
   const { data, loading } = useSearch(query);
 
   return (
@@ -19,6 +19,7 @@ const SearchHero = ({ query }) => {
         keyExtractor={(item) => item.id}
         renderItem={(movie) => (
           <Card
+            navigation={navigation}
             name={movie.item.title}
             pressed={() => console.log(movie.item.id)}
             id={movie.item.id}

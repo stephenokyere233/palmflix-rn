@@ -6,12 +6,12 @@ import { NavigationContainer } from "@react-navigation/native";
 import MovieDetails from "./MovieDetails";
 const Stack = createStackNavigator();
 
-const Home = () => {
+const Home = ({ navigation }) => {
   return (
-    <Hero endpoint={discover_movies} />
+    <Hero endpoint={discover_movies} navigation={navigation} />
     // <NavigationContainer>
     //   <Stack.Screen name="Home">
-      /* </Stack.Screen>
+    /* </Stack.Screen>
       <Stack.Screen name="MovieDetails" component={MovieDetails} />
     </NavigationContainer> */
   );

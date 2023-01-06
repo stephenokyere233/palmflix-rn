@@ -1,12 +1,12 @@
 import React from 'react'
-import { View } from 'react-native'
+import { View,Text } from 'react-native'
 
 const MovieDetails = () => {
   return (
-    <View>
+    <View className="bg-[#021D44] flex-1">
       <Text>Movie Details</Text>
     </View>
-  )
+  );
 }
 
 export default MovieDetails

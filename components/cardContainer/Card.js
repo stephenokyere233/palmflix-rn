@@ -8,7 +8,9 @@ const Card = (props) => {
   return (
     // <View className="w-[150px] m-4">
     <TouchableOpacity
-      onPress={props.pressed}
+      onPress={()=>{
+        props.navigation.navigate('Movie Details')
+      }}
     >
       <Image
         source={{

@@ -6,6 +6,7 @@ import { FontAwesome } from "@expo/vector-icons";
 import { Feather } from "@expo/vector-icons";
 import { FontAwesome5 } from "@expo/vector-icons";
 import { MaterialIcons } from "@expo/vector-icons";
+import { Text } from "react-native";
 import tw from "twrnc";
 
 // Screens
@@ -16,10 +17,12 @@ import TVShows from "../../screens/TVShows";
 import TopRated from "../../screens/TopRated";
 
 import { createStackNavigator } from "@react-navigation/stack";
+import MovieDetails from "../../screens/MovieDetails";
+// import { Text } from "react-native";
 // import MovieDetails from "../../screens/MovieDetails";
 // const Stack = createStackNavigator();
 //Screen names
-const homeName = "Discover";
+const homeName = "Home";
 const searchName = "Search";
 const trendingName = "Trending";
 const topRatedName = "Top Rated";
@@ -34,12 +37,92 @@ const Tab = createBottomTabNavigator();
 //   style: { padding: 10, height: 70, background: "black" },
 // })}
 
+const Stack = createStackNavigator();
+
+const HomeStack = () => (
+  <Stack.Navigator>
+    <Stack.Screen
+      name="Discover Movies"
+      options={{ headerShown: false }}
+      component={Home}
+    />
+    <Stack.Screen
+      name="Movie Details"
+      options={{ headerShown: false }}
+      component={MovieDetails}
+    />
+  </Stack.Navigator>
+);
+
+const SearchStack = () => (
+  <Stack.Navigator>
+    <Stack.Screen
+      name="Search Results"
+      options={{ headerShown: false }}
+      component={Search}
+    />
+    <Stack.Screen
+      name="Movie Details"
+      // options={{ headerShown: false }}
+      component={MovieDetails}
+    />
+  </Stack.Navigator>
+);
+
+const TrendingStack = () => (
+  <Stack.Navigator>
+    <Stack.Screen
+      name="Trending"
+      options={{ headerShown: false }}
+      component={Trending}
+    />
+    <Stack.Screen
+      name="Movie Details"
+      options={{ headerShown: false }}
+      component={MovieDetails}
+    />
+  </Stack.Navigator>
+);
+
+const TVStack = () => (
+  <Stack.Navigator>
+    <Stack.Screen
+      name="TV Shows"
+      options={{ headerShown: false }}
+      component={TVShows}
+    />
+    <Stack.Screen
+      name="Movie Details"
+      options={{ headerShown: false }}
+      component={MovieDetails}
+    />
+  </Stack.Navigator>
+);
+const TopStack = () => (
+  <Stack.Navigator>
+    <Stack.Screen
+      name="Top Rated"
+      options={{ headerShown: false }}
+      component={TopRated}
+    />
+    <Stack.Screen
+      name="Movie Details"
+      options={{ headerShown: false }}
+      component={MovieDetails}
+    />
+  </Stack.Navigator>
+);
+
 function MainContainer() {
   return (
     <NavigationContainer>
       {/* <TitleBar /> */}
       <Tab.Navigator
-   
+        tabBarOptions={{
+          style: {
+            backgroundColor: "black",
+          },
+        }}
         //   style={tw`items-center flex justify-center`}
         initialRouteName={homeName}
         screenOptions={({ route }) => ({
@@ -115,7 +198,7 @@ function MainContainer() {
               activeTintColor: "blueviolet",
               inactiveTintColor: "grey",
               labelStyle: { paddingBottom: 10, fontSize: 10 },
-              style: { padding: 10, height: 100, background: "black" },
+              style: { padding: 10, height: 100 },
             };
           },
         })}
@@ -126,12 +209,67 @@ function MainContainer() {
         //   style: { padding: 10, height: 70 },
         // }}
       >
-        <Tab.Screen name={homeName} component={Home} />
-        <Tab.Screen name={searchName} component={Search} />
-        <Tab.Screen name={trendingName} component={Trending} />
-        <Tab.Screen name={tvShowsName} component={TVShows} />
-        <Tab.Screen name={topRatedName} component={TopRated} />
-        {/* <Stack.Screen name="Movie Details" component={MovieDetails} /> */}
+        <Tab.Screen
+          name={homeName}
+          options={{
+            headerTintColor: "white",
+            headerStyle: {
+              backgroundColor: "#101029",
+            },
+            headerTitleStyle: {
+              fontSize: 24,
+              fontWeight: "bold",
+            },
+          }}
+          component={HomeStack}
+        />
+        <Tab.Screen
+          options={{ headerShown: false }}
+          name={searchName}
+          component={SearchStack}
+        />
+        <Tab.Screen
+          options={{
+            headerTintColor: "white",
+            headerStyle: {
+              backgroundColor: "#101029",
+            },
+            headerTitleStyle: {
+              fontSize: 24,
+              fontWeight: "bold",
+            },
+          }}
+          name={trendingName}
+          component={TrendingStack}
+        />
+        <Tab.Screen
+          options={{
+            headerTintColor: "white",
+            headerStyle: {
+              backgroundColor: "#101029",
+            },
+            headerTitleStyle: {
+              fontSize: 24,
+              fontWeight: "bold",
+            },
+          }}
+          name={tvShowsName}
+          component={TVStack}
+        />
+        <Tab.Screen
+          options={{
+            headerTintColor: "white",
+            headerStyle: {
+              backgroundColor: "#101029",
+            },
+            headerTitleStyle: {
+              fontSize: 24,
+              fontWeight: "bold",
+            },
+          }}
+          name={topRatedName}
+          component={TopStack}
+        />
       </Tab.Navigator>
     </NavigationContainer>
   );

@@ -25,7 +25,7 @@ const App = () => {
       <AppProvider>
         <MainContainer />
       </AppProvider>
-      {/* <StatusBar hidden={true} barStyle="light-content" /> */}
+      <StatusBar barStyle="light-content" />
     </>
   );
 };
