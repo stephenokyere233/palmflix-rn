@@ -9,11 +9,6 @@ const Stack = createStackNavigator();
 const Home = ({ navigation }) => {
   return (
     <Hero endpoint={discover_movies} navigation={navigation} />
-    // <NavigationContainer>
-    //   <Stack.Screen name="Home">
-    /* </Stack.Screen>
-      <Stack.Screen name="MovieDetails" component={MovieDetails} />
-    </NavigationContainer> */
   );
 };
 

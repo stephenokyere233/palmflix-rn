@@ -10,7 +10,7 @@ const Card = (props) => {
       onPress={() => {
         props.navigation.navigate("Movie Details");
         setMovieID(props.id);
-        console.log(props.id);
+        // console.log(`movieId is ${movieID}`);
       }}
     >
       <Image
