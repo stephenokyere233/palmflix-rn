@@ -121,6 +121,7 @@ function MainContainer() {
           },
           tabBarActiveTintColor: "blueviolet",
           tabBarHideOnKeyboard: true,
+          backBehavior:"initialRoute",
 
           tabBarIcon: ({ focused, color, size }) => {
             let iconName;
