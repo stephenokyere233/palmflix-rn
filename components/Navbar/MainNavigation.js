@@ -1,27 +1,20 @@
 import * as React from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import Ionicons from "react-native-vector-icons/Ionicons";
 import { FontAwesome } from "@expo/vector-icons";
 import { Feather } from "@expo/vector-icons";
 import { FontAwesome5 } from "@expo/vector-icons";
 import { MaterialIcons } from "@expo/vector-icons";
-import { Text } from "react-native";
-import tw from "twrnc";
+import { createStackNavigator } from "@react-navigation/stack";
 
 // Screens
+import MovieDetails from "../../screens/MovieDetails";
 import Home from "../../screens/Home";
 import Search from "../../screens/search";
 import Trending from "../../screens/trending";
 import TVShows from "../../screens/TVShows";
 import TopRated from "../../screens/TopRated";
 
-import { createStackNavigator } from "@react-navigation/stack";
-import MovieDetails from "../../screens/MovieDetails";
-// import { Text } from "react-native";
-// import MovieDetails from "../../screens/MovieDetails";
-// const Stack = createStackNavigator();
-//Screen names
 const homeName = "Home";
 const searchName = "Search";
 const trendingName = "Trending";
@@ -29,14 +22,6 @@ const topRatedName = "Top Rated";
 const tvShowsName = "TV Shows";
 
 const Tab = createBottomTabNavigator();
-
-// tabBar={()=>({
-//   activeTintColor: "blueviolet",
-//   inactiveTintColor: "grey",
-//   labelStyle: { paddingBottom: 10, fontSize: 10 },
-//   style: { padding: 10, height: 70, background: "black" },
-// })}
-
 const Stack = createStackNavigator();
 
 const HomeStack = () => (
@@ -63,7 +48,7 @@ const SearchStack = () => (
     />
     <Stack.Screen
       name="Movie Details"
-      // options={{ headerShown: false }}
+      options={{ headerShown: false }}
       component={MovieDetails}
     />
   </Stack.Navigator>
@@ -72,7 +57,7 @@ const SearchStack = () => (
 const TrendingStack = () => (
   <Stack.Navigator>
     <Stack.Screen
-      name="Trending"
+      name="Trending Movies"
       options={{ headerShown: false }}
       component={Trending}
     />
@@ -87,7 +72,7 @@ const TrendingStack = () => (
 const TVStack = () => (
   <Stack.Navigator>
     <Stack.Screen
-      name="TV Shows"
+      name="TV Shows And Series"
       options={{ headerShown: false }}
       component={TVShows}
     />
@@ -101,7 +86,7 @@ const TVStack = () => (
 const TopStack = () => (
   <Stack.Navigator>
     <Stack.Screen
-      name="Top Rated"
+      name="Top Rated Movies"
       options={{ headerShown: false }}
       component={TopRated}
     />
@@ -116,43 +101,37 @@ const TopStack = () => (
 function MainContainer() {
   return (
     <NavigationContainer>
-      {/* <TitleBar /> */}
       <Tab.Navigator
         tabBarOptions={{
           style: {
             backgroundColor: "black",
           },
         }}
-        //   style={tw`items-center flex justify-center`}
         initialRouteName={homeName}
         screenOptions={({ route }) => ({
           tabBarStyle: {
             paddingHorizontal: 6,
             paddingBottom: 10,
-            // borderWidth:0,
-            // flex:1,
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
             fontSize: 10,
-            // lineHeight:0,
             height: 70,
             backgroundColor: "#101029",
-            // activeTintColor: "blueviolet",
           },
-          tabBarLabelStyle: {},
           tabBarActiveTintColor: "blueviolet",
+          tabBarHideOnKeyboard: true,
+
           tabBarIcon: ({ focused, color, size }) => {
             let iconName;
             let rn = route.name;
-
             if (rn === homeName) {
               return (
                 <Feather
                   name="home"
                   size={30}
                   color={focused ? "blueviolet" : "white"}
-                  style={tw`mx-4`}
+                  className="mx-4"
                 />
               );
             } else if (rn === searchName) {
@@ -161,7 +140,7 @@ function MainContainer() {
                   name="search"
                   size={30}
                   color={focused ? "blueviolet" : "white"}
-                  style={tw`mx-4`}
+                  className="mx-4"
                 />
               );
             } else if (rn === trendingName) {
@@ -170,7 +149,7 @@ function MainContainer() {
                   name="fire"
                   size={30}
                   color={focused ? "blueviolet" : "white"}
-                  style={tw`mx-4`}
+                  className="mx-4"
                 />
               );
             } else if (rn === topRatedName) {
@@ -179,7 +158,7 @@ function MainContainer() {
                   name="tv"
                   size={30}
                   color={focused ? "blueviolet" : "white"}
-                  style={tw`mx-4`}
+                  className="mx-4"
                 />
               );
             } else if (rn === tvShowsName) {
@@ -188,7 +167,7 @@ function MainContainer() {
                   name="movie"
                   size={30}
                   color={focused ? "blueviolet" : "white"}
-                  style={tw`mx-4`}
+                  className="mx-4"
                 />
               );
             }
@@ -202,12 +181,6 @@ function MainContainer() {
             };
           },
         })}
-        // tabBar:()=>{{
-        //   activeTintColor: "tomato",
-        //   inactiveTintColor: "grey",
-        //   labelStyle: { paddingBottom: 10, fontSize: 10 },
-        //   style: { padding: 10, height: 70 },
-        // }}
       >
         <Tab.Screen
           name={homeName}

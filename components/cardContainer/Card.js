@@ -1,15 +1,16 @@
-import React from "react";
-import { Image, Text, View, TouchableOpacity } from "react-native";
-// import { TouchableOpacity } from "react-native-gesture-handler";
-import tw from "twrnc";
+import React, { useContext } from "react";
+import { Image, TouchableOpacity } from "react-native";
 import { img_path } from "../../constants/keys";
+import { AppContext } from "../../context/context";
 
 const Card = (props) => {
+  const { movieID, setMovieID } = useContext(AppContext);
   return (
-    // <View className="w-[150px] m-4">
     <TouchableOpacity
-      onPress={()=>{
-        props.navigation.navigate('Movie Details')
+      onPress={() => {
+        props.navigation.navigate("Movie Details");
+        setMovieID(props.id);
+        console.log(props.id);
       }}
     >
       <Image
@@ -20,7 +21,6 @@ const Card = (props) => {
         className="w-[170px] border p-2 bg-gray-600  m-4 rounded-lg h-[250px] object-cover"
       />
     </TouchableOpacity>
-    // </View>
   );
 };
 

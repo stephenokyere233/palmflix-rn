@@ -4,7 +4,6 @@ import { View, StyleSheet } from "react-native";
 const LoadingSpinner = () => {
   return (
     <View className="flex items-center justify-center flex-1">
-      {/* <View className="w-6 h-6 rounded-full bg-gray-300 animate-spin"></View> */}
       <View style={styles.spinner} className="animate-spin"></View>
     </View>
   );

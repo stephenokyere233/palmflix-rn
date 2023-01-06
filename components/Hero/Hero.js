@@ -16,7 +16,6 @@ const Hero = ({ endpoint, navigation }) => {
         <FlatList
           refreshing={loading ? true : false}
           onRefresh={() => {}}
-          // refreshControl={<RefreshControl refreshing={true} />}
           data={data}
           numColumns={2}
           keyExtractor={(item) => item.id}

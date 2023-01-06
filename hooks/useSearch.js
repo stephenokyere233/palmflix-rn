@@ -1,12 +1,10 @@
 import { useState, useEffect, useCallback, useContext } from "react";
 import axios from "axios";
-import { AppContext } from "../context/context";
 import { search_url } from "../constants/keys";
 
 const useSearch = (query) => {
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
-  //   const { data, setData } = useContext(AppContext);
   const [data, setData] = useState([]);
 
   const fetchData = useCallback(async () => {
