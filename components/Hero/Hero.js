@@ -1,35 +1,30 @@
-import React, { useContext, useEffect } from "react";
-import { View, Text, FlatList, StyleSheet, RefreshControl } from "react-native";
-import Card from "../cardContainer/Card";
-import LoadingSpinner from "../loader/loader";
-import { discover_movies } from "../../constants/keys";
-import { AppContext } from "../../context/context";
+import React from "react";
+import { FlatList, View } from "react-native";
 import useGetData from "../../hooks/useGetData";
+import Card from "../cardContainer/Card";
 
-const Hero = ({ endpoint, navigation }) => {
+const Hero = ({ endpoint, navigation, mediaType = "movie" }) => {
   const { data, loading } = useGetData(endpoint);
-  // if (loading) return <LoadingSpinner />;
 
   return (
-    <View className={`flex-1 flex items-center justify-center bg-[#021D44]`}>
-      <View className={`w-full`}>
-        <FlatList
-          refreshing={loading ? true : false}
-          onRefresh={() => {}}
-          data={data}
-          numColumns={2}
-          keyExtractor={(item) => item.id}
-          renderItem={(movie) => (
-            <Card
-              navigation={navigation}
-              name={movie.item.title}
-              pressed={() => console.log(movie.item.id)}
-              id={movie.item.id}
-              image={movie.item.poster_path}
-            />
-          )}
-        />
-      </View>
+    <View className="flex-1 bg-[#021D44]">
+      <FlatList
+        refreshing={loading}
+        onRefresh={() => {}}
+        data={data}
+        numColumns={2}
+        columnWrapperStyle={{ justifyContent: "center" }}
+        keyExtractor={(item) => String(item.id)}
+        contentContainerStyle={{ paddingBottom: 20 }}
+        renderItem={({ item }) => (
+          <Card
+            navigation={navigation}
+            id={item.id}
+            image={item.poster_path}
+            mediaType={item.media_type || mediaType}
+          />
+        )}
+      />
     </View>
   );
 };

@@ -1,6 +1,5 @@
 import React, { useState } from "react";
-import { View, Text, TextInput, SafeAreaView } from "react-native";
-import tw from "twrnc";
+import { TextInput, View } from "react-native";
 import SearchHero from "../components/Hero/SearchHero";
 
 const Search = ({ navigation }) => {

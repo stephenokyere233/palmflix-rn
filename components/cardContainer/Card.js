@@ -3,22 +3,21 @@ import { Image, TouchableOpacity } from "react-native";
 import { img_path } from "../../constants/keys";
 import { AppContext } from "../../context/context";
 
-const Card = (props) => {
-  const { movieID, setMovieID } = useContext(AppContext);
+const Card = ({ navigation, id, image, mediaType = "movie" }) => {
+  const { setMovieID, setMediaType } = useContext(AppContext);
   return (
     <TouchableOpacity
       onPress={() => {
-        props.navigation.navigate("Movie Details");
-        setMovieID(props.id);
-        // console.log(`movieId is ${movieID}`);
+        navigation.navigate("Movie Details");
+        setMovieID(id);
+        setMediaType(mediaType);
       }}
     >
       <Image
         source={{
-          uri: `${img_path}${props.image}`,
-          cache: "only-if-cached",
+          uri: `${img_path}${image}`,
         }}
-        className="w-[170px] border p-2 bg-gray-600  m-4 rounded-lg h-[250px] object-cover"
+        className="w-[170px] border p-2 bg-gray-600 m-4 rounded-lg h-[250px] object-cover"
       />
     </TouchableOpacity>
   );
