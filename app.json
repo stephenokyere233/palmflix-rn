@@ -12,7 +12,9 @@
       "resizeMode": "contain",
       "backgroundColor": "#101029"
     },
-    "assetBundlePatterns": ["**/*"],
+    "assetBundlePatterns": [
+      "**/*"
+    ],
     "ios": {
       "supportsTablet": true
     },
@@ -26,6 +28,11 @@
     "web": {
       "favicon": "./assets/favicon.png",
       "bundler": "metro"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "25d9ce22-b7b1-4737-973b-3173a3b51229"
+      }
     }
   }
 }
